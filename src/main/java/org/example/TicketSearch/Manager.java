@@ -11,8 +11,11 @@ public class Manager {
     public Ticket[] findTicket(String from, String to) {
         Ticket[] result = new Ticket[0];
         for (Ticket ticket : repo.findAll()) {
+            Ticket[] tmp = new Ticket[result.length + 1];
             if (matches(ticket, from, to)) {
-                Ticket[] tmp = new Ticket[result.length + 1];
+                for (int i  = 0; i < result.length; i++) {
+                    tmp[i] = result[i];
+                }
                 tmp[tmp.length - 1] = ticket;
                 result = tmp;
             }
