@@ -62,12 +62,12 @@
                         <configuration>
                             <rules>
                                 <rule>
-                                    <element>METHOD</element>
+                                    <element>BUNDLE</element>
                                     <limits>
                                         <limit>
-                                            <counter>BRANCH</counter>
+                                            <counter>METHOD</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>100%</minimum>
+                                            <minimum>1%</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
