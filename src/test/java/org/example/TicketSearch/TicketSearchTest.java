@@ -48,7 +48,7 @@ public class TicketSearchTest {
     }
 
     @Test
-    public void searchTicket() {
+    public void searchSeveralTicket() {
         Repository repo = new Repository();
         Manager manager = new Manager(repo);
         repo.addTicket(ticket1);
@@ -61,6 +61,44 @@ public class TicketSearchTest {
         repo.addTicket(ticket8);
         Ticket[] expected = {ticket8, ticket7, ticket6, ticket5};
         Ticket[] actual = manager.findTicket("VKO", "LED");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchNonTicket() {
+        Repository repo = new Repository();
+        Manager manager = new Manager(repo);
+        repo.addTicket(ticket1);
+        repo.addTicket(ticket2);
+        repo.addTicket(ticket3);
+        repo.addTicket(ticket4);
+        repo.addTicket(ticket5);
+        repo.addTicket(ticket6);
+        repo.addTicket(ticket7);
+        repo.addTicket(ticket8);
+
+        Ticket[] expected = {};
+        Ticket[] actual = manager.findTicket("ULLI", "VOG");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchOneTicket() {
+        Repository repo = new Repository();
+        Manager manager = new Manager(repo);
+        repo.addTicket(ticket1);
+        repo.addTicket(ticket2);
+        repo.addTicket(ticket3);
+        repo.addTicket(ticket4);
+        repo.addTicket(ticket5);
+        repo.addTicket(ticket6);
+        repo.addTicket(ticket7);
+        repo.addTicket(ticket8);
+
+        Ticket[] expected = {ticket2};
+        Ticket[] actual = manager.findTicket("DME", "RHV");
 
         Assertions.assertArrayEquals(expected, actual);
     }
